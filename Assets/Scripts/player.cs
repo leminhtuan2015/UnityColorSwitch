@@ -13,8 +13,7 @@ public class player : MonoBehaviour {
 	public Rigidbody2D myRigidbody2D;
 	public SpriteRenderer spriteRenderer;
 	public Score score;
-
-	private bool isGameOver = false;
+	public GameObject playerExplosion;
 
 	// Use this for initialization
 	void Start () {
@@ -28,17 +27,18 @@ public class player : MonoBehaviour {
 			&& !EventSystem.current.IsPointerOverGameObject()){
 			Debug.Log ("Tapped");
 
-			if (isGameOver) {
-				ReStartGame ();
-			} else {
-				myRigidbody2D.velocity = Vector2.up * jumpForce;
-			}
+			myRigidbody2D.velocity = Vector2.up * jumpForce;
 		}
 	}
 
 	void GetGameObjectComponents (){
 		myRigidbody2D = GetComponent<Rigidbody2D> ();
 		spriteRenderer = GetComponent<SpriteRenderer> ();
+	}
+
+	void OnCollisionEnter2D(Collision2D col)
+	{
+		Debug.Log("OnCollisionEnter");
 	}
 
 	void OnTriggerEnter2D (Collider2D collider) {
@@ -78,15 +78,8 @@ public class player : MonoBehaviour {
 	}
 
 	void StopGame(){
-		Time.timeScale = 0;
-		isGameOver = true;
-		//SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex);
-	}
-
-	void ReStartGame(){
-		isGameOver = false;
-		Time.timeScale = 1;
-		SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex);
+//		Time.timeScale = 0;
+		Instantiate(playerExplosion, transform.position, transform.rotation);
 	}
 
 	void GameOver() {
