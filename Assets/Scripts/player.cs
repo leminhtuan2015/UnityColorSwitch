@@ -7,7 +7,7 @@ using MyUtils;
 
 public class player : MonoBehaviour {
 
-	public float jumpForce = 10f; 
+	public float jumpForce = 8f; 
 	public Color currentColor;
 
 	public Rigidbody2D myRigidbody2D;
@@ -24,7 +24,8 @@ public class player : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () { 
-		if((Input.GetButtonDown("Jump") || Input.GetMouseButtonDown(0)) && !EventSystem.current.IsPointerOverGameObject()){
+		if((Input.GetButtonDown("Jump") || Input.GetMouseButtonDown(0)) 
+			&& !EventSystem.current.IsPointerOverGameObject()){
 			Debug.Log ("Tapped");
 
 			if (isGameOver) {
