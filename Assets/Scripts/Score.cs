@@ -19,6 +19,6 @@ public class Score : MonoBehaviour {
 
 	public void UpdateScore (int scoreNumber) {
 		currentScore = currentScore + scoreNumber;
-		GameObject.FindGameObjectWithTag ("ScoreText").GetComponent<Text> ().text = "Best Score: " + currentScore;
+		GameObject.FindGameObjectWithTag ("ScoreText").GetComponent<Text> ().text = "" + currentScore;
 	}
 }

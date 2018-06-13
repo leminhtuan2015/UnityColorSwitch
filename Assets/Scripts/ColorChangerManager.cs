@@ -22,7 +22,8 @@ public class ColorChangerManager : MonoBehaviour {
 			
 		for (int y = 0; y < 100; y++) {
 			Color randomColor = GetRandomColor (MyUtils.Utils.colors);
-			colorChanger.GetComponent<SpriteRenderer> ().color = randomColor;
+//			colorChanger.GetComponent<SpriteRenderer> ().color = randomColor;
+			colorChanger.GetComponent<SpriteRenderer> ().color = Color.white;
 			colorChanger.name = MyUtils.Utils.ColorToHex(randomColor);
 
 			Instantiate(colorChanger, new Vector3(0f, distance + y * distance, 0f), Quaternion.identity);
