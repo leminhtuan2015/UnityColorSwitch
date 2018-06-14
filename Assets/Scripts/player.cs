@@ -66,7 +66,7 @@ public class player : MonoBehaviour {
 	void OnBecameInvisible() {
 		Debug.Log ("Player OnBecameInvisible");
 
-		GameOver ();
+//		GameOver ();
 	}
 
 	void SetRandomColor (Color[] colors) {
@@ -80,7 +80,7 @@ public class player : MonoBehaviour {
 	void StopGame(){
 //		Time.timeScale = 0;
 		Instantiate(playerExplosion, transform.position, transform.rotation);
-		Invoke("DestroyGameObject", 0.5f);
+		DestroyGameObject ();
 	}
 
 	void DestroyGameObject(){
