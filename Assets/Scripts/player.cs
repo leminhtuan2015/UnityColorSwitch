@@ -11,7 +11,7 @@ public class player : MonoBehaviour {
 	public Color currentColor;
 
 	public Rigidbody2D myRigidbody2D;
-	public SpriteRenderer spriteRenderer;
+	public SpriteRenderer spriteRenderer;  
 	public Score score;
 	public GameObject playerExplosion;
 
@@ -23,7 +23,7 @@ public class player : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () { 
-		if((Input.GetButtonDown("Jump") || Input.GetMouseButtonDown(0)) 
+		if(gameObject && (Input.GetButtonDown("Jump") || Input.GetMouseButtonDown(0)) 
 			&& !EventSystem.current.IsPointerOverGameObject()){
 			Debug.Log ("Tapped");
 
@@ -80,6 +80,11 @@ public class player : MonoBehaviour {
 	void StopGame(){
 //		Time.timeScale = 0;
 		Instantiate(playerExplosion, transform.position, transform.rotation);
+		Invoke("DestroyGameObject", 0.5f);
+	}
+
+	void DestroyGameObject(){
+		Destroy (gameObject);
 	}
 
 	void GameOver() {

@@ -17,7 +17,7 @@ public class FollowPlayer : MonoBehaviour {
 		// playerTransform : transform component of player
 		// transform: transform component of this camera GameObject
 
-		if(playerTransform.position.y > transform.position.y){
+		if(playerTransform && (playerTransform.position.y > transform.position.y)){
 			transform.position = new Vector3 (transform.position.x, playerTransform.position.y, transform.position.z);
 		}
 	}
