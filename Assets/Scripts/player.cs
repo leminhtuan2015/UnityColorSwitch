@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.SceneManagement;
 using MyUtils;
 
 public class player : MonoBehaviour {
@@ -14,6 +13,7 @@ public class player : MonoBehaviour {
 	public SpriteRenderer spriteRenderer;  
 	public Score score;
 	public GameObject playerExplosion;
+    public GameObject gameManager;
 
 	// Use this for initialization
 	void Start () {
@@ -65,7 +65,6 @@ public class player : MonoBehaviour {
 	}
 
 	void OnBecameInvisible() {
-//		GameOver ();
 	}
 
 	void SetRandomColor (Color[] colors) {
@@ -77,17 +76,14 @@ public class player : MonoBehaviour {
 	}
 
 	void StopGame(){
-//		Time.timeScale = 0;
+        //		Time.timeScale = 0;
+        gameManager.gameObject.GetComponent<GameManager>().ShowReplay();
 		Instantiate(playerExplosion, transform.position, transform.rotation);
 		DestroyGameObject ();
 	}
 
 	void DestroyGameObject(){
 		Destroy (gameObject);
-	}
-
-	void GameOver() {
-		SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex);
 	}
 
 }

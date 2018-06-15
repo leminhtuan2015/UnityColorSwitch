@@ -2,15 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class CanvasInputHandler : MonoBehaviour {
 
 	private bool isPauseGame = false;
 	public Button playButton;
 	public Button pauseButton;
+    public Button rePlayButton;
 
 	// Use this for initialization
 	void Start () {
+        rePlayButton.gameObject.SetActive(false);
 	}
 	
 	// Update is called once per frame
@@ -34,4 +37,14 @@ public class CanvasInputHandler : MonoBehaviour {
 		}
 
 	}
+
+    public void ShowReplay()
+    {
+        rePlayButton.gameObject.SetActive(true);
+    }
+
+    public void ReStartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
 }

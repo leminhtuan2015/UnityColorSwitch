@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
 
+    public Canvas canvas;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -20,4 +22,10 @@ public class GameManager : MonoBehaviour {
 	void GameOver() {
 		SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex);
 	}
+
+    public void ShowReplay(){
+        Debug.Log("Show Replayeee");
+
+        canvas.gameObject.GetComponent<CanvasInputHandler>().ShowReplay();
+    }
 }
