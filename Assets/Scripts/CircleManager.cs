@@ -21,11 +21,11 @@ public class CircleManager : MonoBehaviour {
 		GameObject smallCircle = Resources.Load ("Prefabs/SmallCircle") as GameObject;
 		GameObject bigCircle = Resources.Load ("Prefabs/BigCircle") as GameObject;
 
-		for (int y = 0; y < 20; y++) {
+		for (int y = 0; y < 5; y++) {
 			Instantiate(smallCircle, new Vector3(0f, distance + y * distance, 0f), Quaternion.identity);
 //			Instantiate(bigCircle, new Vector3(0f, distance + y * distance, 0f), Quaternion.identity);
 
-            if(y > 10){
+            if(y > 1){
                 Instantiate(bigCircle, new Vector3(0f, distance + y * distance, 0f), Quaternion.identity);
             }
 		}
