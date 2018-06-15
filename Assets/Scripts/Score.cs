@@ -33,7 +33,7 @@ public class Score : MonoBehaviour {
 		}
 
 		scoreText.text = "" + currentScore;
-		bestScoreText.text = "Best Score:" + bestScore;
+		bestScoreText.text = "Best: " + bestScore;
 	}
 
 	void GetBestScore(){
