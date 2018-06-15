@@ -38,7 +38,6 @@ public class Score : MonoBehaviour {
 
 	void GetBestScore(){
 		bestScore = PlayerPrefs.GetInt(BestScoreKey);
-		Debug.Log ("Best Score: " + bestScore);
 	}
 
 	void StoreBestScore(int bestScore){

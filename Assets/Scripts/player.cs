@@ -25,7 +25,6 @@ public class player : MonoBehaviour {
 	void Update () { 
 		if(gameObject && (Input.GetButtonDown("Jump") || Input.GetMouseButtonDown(0)) 
 			&& !EventSystem.current.IsPointerOverGameObject()){
-			Debug.Log ("Tapped");
 
 			myRigidbody2D.velocity = Vector2.up * jumpForce;
 		}
@@ -38,7 +37,6 @@ public class player : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D col)
 	{
-		Debug.Log("OnCollisionEnter");
 	}
 
 	void OnTriggerEnter2D (Collider2D collider) {
@@ -53,10 +51,13 @@ public class player : MonoBehaviour {
 		}
 
 		if(collider.tag == "Ground"){
-			Debug.Log ("Hit Ground");
 			myRigidbody2D.velocity = Vector2.up * jumpForce / 2;
 			return;
 		}
+
+        if(collider.tag == "BackGroundBar"){
+            return;
+        }
 
 		if(collider.tag != Utils.ColorToHex(currentColor)){
 			StopGame ();
@@ -64,8 +65,6 @@ public class player : MonoBehaviour {
 	}
 
 	void OnBecameInvisible() {
-		Debug.Log ("Player OnBecameInvisible");
-
 //		GameOver ();
 	}
 
@@ -88,7 +87,6 @@ public class player : MonoBehaviour {
 	}
 
 	void GameOver() {
-		Debug.Log ("Game Over");
 		SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex);
 	}
 
